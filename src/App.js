@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
+import React,{Suspense,lazy} from 'react'
+import {BrowserRouter,Routes,Route} from 'react-router-dom'
+import "./sass/main.scss"
+import {Provider,useSelector} from  'react-redux'
+import { PersistGate } from "redux-persist/integration/react";
+import store,{persistor} from './store/homeReducer'
+import 'antd/dist/antd.css';
+import Sidebar from './Admin/Sidebar/index'
+//Admin
+const AdminL = lazy(()=>import("./Admin/Login/index"))
+const Panel = lazy(()=>import("./Admin/Panel/index"))
+const Order = lazy(()=>import("./Admin/Order/index"))
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+
+const App  =()=>{
+   const login = useSelector((state) => state.login.login)
+
+  return(
+    <>
+<Provider store ={store} >
+   <PersistGate persistor={persistor}>
+<BrowserRouter>
+<Suspense fallback={<div>...loading</div>}>
+  { login === true ? <Sidebar />:null } 
+<Routes>
+  
+
+   <Route element={<AdminL/>} path="/"/> 
+   <Route element={<Panel/>} path="/admin-panel"/> 
+   <Route element={<Order/>} path="/admin-order"/> 
+
+
+
+</Routes>
+
+</Suspense>
+
+</BrowserRouter>
+</PersistGate>
+   </Provider>
+
+    </>
+  )
 }
 
 export default App;

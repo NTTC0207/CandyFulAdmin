@@ -1,0 +1,32 @@
+$primary : #FA7070;
+$text : white;
+html{
+  overflow: overlay;
+}
+
+body {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif !important;
+    background:#001529!important;
+  }
+  
+
+
+  /* Scrollbar Styling */
+::-webkit-scrollbar {
+  background: transparent;
+  width: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  -webkit-border-radius: 10px;
+  border-radius: 10px;
+  background: white; 
+}
+  
