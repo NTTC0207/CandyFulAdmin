@@ -73,7 +73,7 @@ const dispatch = useDispatch()
                                     name="username"
                                     rules={[{ required: true, message: 'Please input your Username!' }]}
                                 >
-                                    <Input placeholder="Username"            
+                                    <Input placeholder="Email"            
                                     />
                                 </Form.Item>
                                 <Form.Item

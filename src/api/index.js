@@ -1,1 +1,1 @@
-export const apiUrl="https://localhost:44359/api"
+export const apiUrl="https://techno20221027164650.azurewebsites.net/api"
